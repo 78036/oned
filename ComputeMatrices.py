@@ -2,7 +2,8 @@
 # do NOT change the name, input and output of these functions
 
 import time
-
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -150,7 +151,7 @@ def main():
     plt.title('Comparing Correlation Computation Methods')
     plt.legend()
     plt.savefig('CompareCorrelationCompFig.pdf')
-    plt.show()  # uncomment this if you want to see it right way
+    #plt.show()  # uncomment this if you want to see it right way
     print("result is written to CompareCorrelationCompFig.pdf")
 
 
