@@ -132,9 +132,9 @@ def main():
     plt.ylabel('Running Time (Seconds)')
     plt.title('Comparing Distance Computation Methods')
     plt.legend()
-    plt.savefig('CompareDistanceCompFig.pdf')
+    plt.savefig('CompareDistanceCompFig.png')
     # plt.show()    # uncomment this if you want to see it right way
-    print("result is written to CompareDistanceCompFig.pdf")
+    print("result is written to CompareDistanceCompFig.png")
 
     mean_corr_loop = np.mean(perf_corr_loop, axis=0)  # mean time for each parameter setting (over 10 trials)
     mean_corr_cool = np.mean(perf_corr_cool, axis=0)
@@ -150,9 +150,9 @@ def main():
     plt.ylabel('Running Time (Seconds)')
     plt.title('Comparing Correlation Computation Methods')
     plt.legend()
-    plt.savefig('CompareCorrelationCompFig.pdf')
+    plt.savefig('CompareCorrelationCompFig.png')
     #plt.show()  # uncomment this if you want to see it right way
-    print("result is written to CompareCorrelationCompFig.pdf")
+    print("result is written to CompareCorrelationCompFig.png")
 
 
 if __name__ == "__main__":
