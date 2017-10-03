@@ -27,10 +27,9 @@ def main():
     distance_loop = compute_distance_naive(X)
     distance_cool = compute_distance_smart(X)
 
-    print
-    np.allclose(distance_true, distance_loop)
-    print
-    np.allclose(distance_true, distance_cool)
+    print(np.allclose(distance_true, distance_loop))
+    print(np.allclose(distance_true, distance_cool))
 
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()
