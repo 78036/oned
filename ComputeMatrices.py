@@ -69,7 +69,7 @@ def compute_correlation_smart(X):
 
 def main():
     print('starting comparing distance computation .....')
-    np.random.seed("mongo only pawn in game of life")
+    np.random.seed("mongo")
     params = range(10, 141, 10)  # different param setting
     nparams = len(params)  # number of different parameters
 
