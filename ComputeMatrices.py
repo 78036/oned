@@ -2,7 +2,9 @@
 # do NOT change the name, input and output of these functions
 
 import time
+
 import matplotlib as mpl
+
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -18,13 +20,9 @@ def compute_distance_naive(X):
         for j in range(N):
             xi = X[i, :]
             xj = X[i, :]
-            sum = 0.0
-            for k in range(len(xi)):
-                sum = sum + (xj[k] - xi[k]) * (xj[k] - xi[k])
-            dist = np.sqrt(sum)  # a placetaker line,
-            # you have to change it to distance between xi and xj
+            print(xi)
+            dist = np.sqrt(np.dot(np.transpose(xi), xj))
             M[i, j] = dist
-
     return M
 
 
