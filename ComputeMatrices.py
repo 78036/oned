@@ -20,7 +20,6 @@ def compute_distance_naive(X):
         for j in range(N):
             xi = X[i, :]
             xj = X[i, :]
-            print(xi)
             dist = np.sqrt(np.dot(np.transpose(xi), xj))
             M[i, j] = dist
     return M
