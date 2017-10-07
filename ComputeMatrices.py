@@ -12,17 +12,17 @@ import numpy as np
 
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
-    N = X.shape[0]  # num of rows
+    number_of_rows = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
 
-    M = np.zeros([N, N])
-    for i in range(N):
-        for j in range(N):
-            xi = X[i, :]
+    result_matrix = np.zeros([number_of_rows, number_of_rows])
+    for result_matrix_row in range(number_of_rows):
+        for result_matrix_column in range(number_of_rows):
+            xi = X[result_matrix_row, :]
             # xj = X[i, :]
             dist = np.sqrt(np.dot(np.transpose(xi), xi))
-            M[i, j] = dist
-    return M
+            result_matrix[result_matrix_row, result_matrix_column] = dist
+    return result_matrix
 
 
 # second function to fill, compute distance matrix without loops
