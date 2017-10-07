@@ -4,3 +4,10 @@ matrix dimensions:  100 10
 matrix dimensions:  200 20
 matrix dimensions:  300 30
 matrix dimensions:  400 40
+Sat Oct  7 19:34:39 EDT 2017
+starting comparing distance computation .....
+matrix dimensions:  100 10
+matrix dimensions:  200 20
+matrix dimensions:  300 30
+matrix dimensions:  400 40
+matrix dimensions:  500 50
