@@ -12,26 +12,28 @@ import numpy as np
 
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
-    number_of_rows = X.shape[0]  # num of rows
+    N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
 
-    result_matrix = np.zeros([number_of_rows, number_of_rows])
-    for result_matrix_row in range(number_of_rows):
-        for result_matrix_column in range(number_of_rows):
-            xi = X[result_matrix_row, :]
-            xt = np.transpose(xi)
-            xd = np.dot(xt, xi)
-            # xj = X[i, :]
-            dist = np.sqrt(xd)
-            result_matrix[result_matrix_row, result_matrix_column] = dist
-    return result_matrix
+    M = np.zeros([N, N])
+    for i in range(N):
+        for j in range(N):
+            xi = X[i, :]
+            xj = X[j, :]
+            # dist = 0.0  # a placetaker line,
+            # you have to change it to distance between xi and xj
+            sum = 0.0
+            for increment in range(D):
+                sum = sum + np.square(X[i, increment] - X[j, increment])
+            dist = np.sqrt(sum)
+            M[i, j] = dist
+    return M
 
 
 # second function to fill, compute distance matrix without loops
 def compute_distance_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
-
     # use X to create M
     M = np.zeros([N, N])
     return M
