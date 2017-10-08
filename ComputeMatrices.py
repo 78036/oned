@@ -34,7 +34,6 @@ def compute_distance_smart(X):
 
     # use X to create M
     M = np.zeros([N, N])
-
     return M
 
 
