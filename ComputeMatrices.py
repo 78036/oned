@@ -24,7 +24,7 @@ def compute_distance_naive(X):
             # you have to change it to distance between xi and xj
             sum = 0.0
             for increment in range(D):
-                sum = sum + np.square(X[i, increment] - X[j, increment])
+                sum = sum + np.square(X[i, increment].T - X[j, increment].T)
             dist = np.sqrt(sum)
             M[i, j] = dist
     return M
