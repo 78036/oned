@@ -22,10 +22,11 @@ def compute_distance_naive(X):
             xj = X[j, :]
             # dist = 0.0  # a placetaker line,
             # you have to change it to distance between xi and xj
-            sum = 0.0
-            for increment in range(D):
-                sum = sum + np.square(X[i, increment].T - X[j, increment].T)
-            dist = np.sqrt(sum)
+            # sum = 0.0
+            # for increment in range(D):
+            #     sum = sum + np.square(X[i, increment].T - X[j, increment].T)
+            # dist = np.sqrt(sum)
+            dist = np.linalg.norm(xi - xj)
             M[i, j] = dist
     return M
 
