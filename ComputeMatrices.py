@@ -37,6 +37,7 @@ def compute_distance_smart(X):
     D = X[0].shape[0]  # num of cols
     # use X to create M
     M = np.zeros([N, N])
+
     return M
 
 
@@ -44,7 +45,6 @@ def compute_distance_smart(X):
 def compute_correlation_naive(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
-
     # use X to create M
     M = np.zeros([D, D])
 
@@ -147,6 +147,7 @@ def main():
     plt.title('Comparing Distance Computation Methods')
     plt.legend()
     plt.savefig('CompareDistanceCompFig.png')
+    plt.savefig('test-reports/CompareDistanceCompFig.png')
     # plt.show()    # uncomment this if you want to see it right way
     print("result is written to CompareDistanceCompFig.png")
 
@@ -172,6 +173,7 @@ def main():
     plt.title('Comparing Correlation Computation Methods')
     plt.legend()
     plt.savefig('CompareCorrelationCompFig.png')
+    plt.savefig('test-reports/CompareCorrelationCompFig.png')
     # plt.show()  # uncomment this if you want to see it right way
     print("result is written to CompareCorrelationCompFig.png")
 
