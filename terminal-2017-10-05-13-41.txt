@@ -1,6 +1,0 @@
-Thu Oct  5 13:41:13 EDT 2017
-starting comparing distance computation .....
-matrix dimensions:  100 10
-matrix dimensions:  200 20
-matrix dimensions:  300 30
-matrix dimensions:  400 40
