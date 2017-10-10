@@ -44,7 +44,6 @@ def get_sum_x_i(input_matrix):
     for i in range(number_of_columns):
         for j in range(number_of_rows):
             result[i] += input_matrix[j, i]
-    print(result)
     return result
 
 # first function to fill, compute distance matrix using loops
@@ -88,6 +87,8 @@ def compute_correlation_naive(X):
     # use X to create M
     M = np.zeros([D, D])
     sum_x_i = get_sum_x_i(X)
+    sample_mean = sum_x_i/N
+    assert sample_mean.shape[0] == D
     M = np.zeros([D, D])
     for i in range(D):
         for j in range(D):
