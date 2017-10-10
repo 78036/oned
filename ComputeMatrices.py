@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# first function to fill, compute distance matrix using loops
+# this is just me trying to learn
 def compute_stupid_naive(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
@@ -26,7 +26,7 @@ def compute_stupid_naive(X):
     return M
 
 
-# second function to fill, compute distance matrix without loops
+# this is just me trying to learn
 def compute_stupid_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
@@ -35,6 +35,16 @@ def compute_stupid_smart(X):
     # a = np.sum((X) ** 2, axis=1)
     return a
 
+
+# get xi
+def get_sum_x_i(input_matrix):
+    number_of_rows = input_matrix.shape[0]
+    number_of_columns = input_matrix[0].shape[0]
+    result = np.zeros(number_of_columns)
+    for i in range(number_of_columns):
+        for j in range(number_of_rows):
+            result[i] += input_matrix[j, i]
+    return result
 
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
@@ -76,13 +86,16 @@ def compute_correlation_naive(X):
     D = X[0].shape[0]  # num of cols
     # use X to create M
     M = np.zeros([D, D])
-
+    sum_x_i = get_sum_x_i(X)
+    sample_mean = sum_x_i/N
+    assert sample_mean.shape[0] == D
     M = np.zeros([D, D])
     for i in range(D):
         for j in range(D):
             xi = X[:, i]
             xj = X[:, j]
-            corr = 0.0  # a placetaker line,
+            corr = 0.0
+            # a placetaker line,
             # you have to change it to correlation between xi and xj
             M[i, j] = corr
 
