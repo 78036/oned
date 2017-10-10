@@ -53,7 +53,7 @@ def compute_distance_naive(X):
             #     sum = sum + np.square(X[i, increment].T - X[j, increment].T)
             # dist = np.sqrt(sum)
             # dist = np.linalg.norm(xi - xj)
-            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi, xj) + np.dot(xj, xj))
+            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.T, xj) + np.dot(xj, xj))
             M[i, j] = dist
     return M
 
