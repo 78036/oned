@@ -20,7 +20,8 @@ def compute_stupid_naive(X):
         for j in range(N):
             xi = X[i, :]
             xj = X[j, :]
-            dist = np.dot(xi, xj)
+            # dist = np.dot(xi, xj)
+            dist = np.dot(xi, xi)
             M[i, j] = dist
     return M
 
@@ -30,7 +31,9 @@ def compute_stupid_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    a = np.dot(X, X.T)
+    # a = np.dot(X, X.T)
+    a = np.sum((X) ** 2, axis=1)
+    print(a.shape)
     return a
 
 
