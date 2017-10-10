@@ -11,6 +11,30 @@ import numpy as np
 
 
 # first function to fill, compute distance matrix using loops
+def compute_stupid_naive(X):
+    N = X.shape[0]  # num of rows
+    D = X[0].shape[0]  # num of cols
+
+    M = np.zeros([N, N])
+    for i in range(N):
+        for j in range(N):
+            xi = X[i, :]
+            xj = X[j, :]
+            dist = np.dot(xi, xi)
+            M[i, j] = dist
+    return M
+
+
+# second function to fill, compute distance matrix without loops
+def compute_stupid_smart(X):
+    N = X.shape[0]  # num of rows
+    D = X[0].shape[0]  # num of cols
+    # use X to create M
+    a = np.dot(X, X.T)
+    return a
+
+
+# first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
@@ -38,8 +62,10 @@ def compute_distance_smart(X):
     D = X[0].shape[0]  # num of cols
     # use X to create M
     M = np.zeros([N, N])
-
-    return M
+    a = np.dot(X, X.T)
+    b = M
+    c = np.dot(X, X.T)
+    return a - b + c
 
 
 # third function to fill, compute correlation matrix using loops
@@ -79,6 +105,10 @@ def main():
     nparams = len(params)  # number of different parameters
 
     # 10 trials = 10 rows, each parameter is a column
+    perf_stupid_loop = np.zeros([10, nparams])
+    perf_stupid_cool = np.zeros([10, nparams])
+
+    # 10 trials = 10 rows, each parameter is a column
     perf_dist_loop = np.zeros([10, nparams])
     perf_dist_cool = np.zeros([10, nparams])
     # 10 trials = 10 rows, each parameter is a column
@@ -94,6 +124,21 @@ def main():
 
         for i in range(10):
             X = np.random.rand(nrows, ncols)  # random matrix
+
+            # compute distance matrices
+            st = time.time()
+            stupid_loop = compute_stupid_naive(X)
+            et = time.time()
+            perf_stupid_loop[i, counter] = et - st  # time difference
+
+            st = time.time()
+            stupid_cool = compute_stupid_smart(X)
+            et = time.time()
+            perf_stupid_cool[i, counter] = et - st
+
+            # check if the two computed matrices are identical all the time
+            # add assert after adding correct method
+            assert np.allclose(stupid_loop, stupid_cool, atol=1e-06)
 
             # compute distance matrices
             st = time.time()
@@ -125,6 +170,12 @@ def main():
             # assert np.allclose(corr_loop, corr_cool, atol=1e-06)
 
         counter = counter + 1
+
+    # mean time for each parameter setting (over 10 trials)
+    mean_stupid_loop = np.mean(perf_dist_loop, axis=0)
+    mean_stupid_cool = np.mean(perf_dist_cool, axis=0)
+    std_stupid_loop = np.std(perf_dist_loop, axis=0)  # standard deviation
+    std_stupid_cool = np.std(perf_dist_cool, axis=0)
 
     # mean time for each parameter setting (over 10 trials)
     mean_dist_loop = np.mean(perf_dist_loop, axis=0)
@@ -177,6 +228,26 @@ def main():
     plt.savefig('test-reports/CompareCorrelationCompFig.png')
     # plt.show()  # uncomment this if you want to see it right way
     print("result is written to CompareCorrelationCompFig.png")
+
+    plt.figure(3)
+    plt.errorbar(params,
+                 mean_stupid_loop[0:nparams],
+                 yerr=std_stupid_loop[0:nparams],
+                 color='red',
+                 label='Loop Solution for Stupid Comp')
+    plt.errorbar(params,
+                 mean_stupid_cool[0:nparams],
+                 yerr=std_stupid_cool[0:nparams],
+                 color='blue',
+                 label='Matrix Solution for Stupid Comp')
+    plt.xlabel('Number of Cols of the Matrix')
+    plt.ylabel('Running Time (Seconds)')
+    plt.title('Comparing Stupid Computation Methods')
+    plt.legend()
+    plt.savefig('CompareStupidCompFig.png')
+    plt.savefig('test-reports/CompareStupidCompFig.png')
+    # plt.show()    # uncomment this if you want to see it right way
+    print("result is written to CompareStupidCompFig.png")
 
 
 if __name__ == "__main__":
