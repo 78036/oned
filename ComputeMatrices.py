@@ -46,6 +46,18 @@ def get_sum_x_i(input_matrix):
             result[i] += input_matrix[j, i]
     return result
 
+
+# get sii
+def get_s_i_i(input_matrix, mu, row_number):
+    n_max = input_matrix.shape[0]
+    intermediate_subtract = 0.0
+    for n in range(n_max):
+        intermediate_subtract += (input_matrix[n][row_number] - mu[row_number]) ** 2
+    result = intermediate_subtract / (n_max - 1)
+    assert np.abs(result) < 1
+    return result
+
+
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
     N = X.shape[0]  # num of rows
@@ -87,10 +99,11 @@ def compute_correlation_naive(X):
     # use X to create M
     M = np.zeros([D, D])
     sum_x_i = get_sum_x_i(X)
-    sample_mean = sum_x_i/N
+    sample_mean = sum_x_i / N
     assert sample_mean.shape[0] == D
     M = np.zeros([D, D])
     for i in range(D):
+        s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
             xi = X[:, i]
             xj = X[:, j]
