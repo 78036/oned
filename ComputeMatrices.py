@@ -20,8 +20,8 @@ def compute_stupid_naive(X):
         for j in range(N):
             xi = X[i, :]
             xj = X[j, :]
-            # dist = np.dot(xi, xj)
-            dist = np.dot(xi, xi)
+            dist = np.dot(xi.T, xj)
+            # dist = np.dot(xi.T, xi)
             M[i, j] = dist
     return M
 
@@ -31,8 +31,8 @@ def compute_stupid_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    # a = np.dot(X, X.T)
-    a = np.sum((X) ** 2, axis=1)
+    a = np.dot(X, X.T)
+    # a = np.sum((X) ** 2, axis=1)
     return a
 
 
@@ -140,7 +140,7 @@ def main():
 
             # check if the two computed matrices are identical all the time
             # add assert after adding correct method
-            # assert np.allclose(stupid_loop, stupid_cool, atol=1e-06)
+            assert np.allclose(stupid_loop, stupid_cool, atol=1e-06)
             np.savetxt('test-reports/loop.txt', stupid_loop, delimiter=',')
             np.savetxt('test-reports/cool.txt', stupid_cool, delimiter=',')
 
