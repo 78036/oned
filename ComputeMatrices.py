@@ -118,6 +118,8 @@ def compute_correlation_naive(X):
         s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
             s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
+            if(i == j):
+                assert s_i_i == s_i_j
             xi = X[:, i]
             xj = X[:, j]
             corr = 0.0
