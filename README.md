@@ -74,7 +74,7 @@ def compute_correlation_naive(X):
             sij[i][j] = s_i_j
             xi = X[:, i]
             xj = X[:, j]
-            corr = sij / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
+            corr = sij[i][j] / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
             # a placetaker line,
             # you have to change it to correlation between xi and xj
             M[i, j] = corr

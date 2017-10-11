@@ -124,7 +124,10 @@ def compute_correlation_naive(X):
             sij[i][j] = s_i_j
             xi = X[:, i]
             xj = X[:, j]
-            corr = sij[i][j] / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
+            if sij[i][i] != 0 or sij[j][j] != 0:
+                corr = 0
+            else:
+                corr = sij[i][j] / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
             # a placetaker line,
             # you have to change it to correlation between xi and xj
             M[i, j] = corr
@@ -138,7 +141,6 @@ def compute_correlation_smart(X):
 
     # use X to create M
     M = np.corrcoef(X)
-
     return M
 
 
