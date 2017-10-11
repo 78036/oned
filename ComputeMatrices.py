@@ -141,7 +141,6 @@ def compute_correlation_smart(X):
 
     # use X to create M
     M = np.corrcoef(X)
-
     return M
 
 
