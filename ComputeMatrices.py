@@ -58,6 +58,18 @@ def get_s_i_i(input_matrix, mu, row_number):
     return result
 
 
+# get sij
+def get_s_i_j(input_matrix, mu, row_number, column_number):
+    n_max = input_matrix.shape[0]
+    intermediate_subtract = 0.0
+    for n in range(n_max):
+        intermediate_subtract += (
+        (input_matrix[n][row_number] - mu[row_number]) * (input_matrix[n][row_number] - mu[column_number]))
+    result = intermediate_subtract / (n_max - 1)
+    assert np.abs(result) < 1
+    return result
+
+
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
     N = X.shape[0]  # num of rows
@@ -102,16 +114,20 @@ def compute_correlation_naive(X):
     sample_mean = sum_x_i / N
     assert sample_mean.shape[0] == D
     M = np.zeros([D, D])
+    sij = np.zeros([D, D])
     for i in range(D):
         s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
+            s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
+            if(i == j):
+                assert s_i_i == s_i_j
+            sij[i][j] = s_i_j
             xi = X[:, i]
             xj = X[:, j]
-            corr = 0.0
+            corr = sij / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
             # a placetaker line,
             # you have to change it to correlation between xi and xj
             M[i, j] = corr
-
     return M
 
 
