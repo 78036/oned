@@ -1,4 +1,0 @@
-Tue Oct 10 20:00:05 EDT 2017
-starting comparing distance computation .....
-matrix dimensions:  100 10
-Tue Oct 10 20:00:05 EDT 2017
