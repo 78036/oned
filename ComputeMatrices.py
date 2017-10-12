@@ -33,7 +33,7 @@ def compute_stupid_smart(X):
     # use X to create M
     # a = np.dot(X, X.T)
     a = np.sum(X ** 2, axis=1)
-    b = np.tile(a, reps=D)
+    b = np.tile(a, (D, D))
     return b
 
 
@@ -65,7 +65,7 @@ def get_s_i_j(input_matrix, mu, row_number, column_number):
     intermediate_subtract = 0.0
     for n in range(n_max):
         intermediate_subtract += (
-        (input_matrix[n][row_number] - mu[row_number]) * (input_matrix[n][row_number] - mu[column_number]))
+            (input_matrix[n][row_number] - mu[row_number]) * (input_matrix[n][row_number] - mu[column_number]))
     result = intermediate_subtract / (n_max - 1)
     assert np.abs(result) < 1
     return result
@@ -117,7 +117,7 @@ def compute_correlation_naive(X):
         s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
             s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
-            if(i == j):
+            if (i == j):
                 assert s_i_i == s_i_j
             sij[i][j] = s_i_j
             xi = X[:, i]
