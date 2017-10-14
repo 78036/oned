@@ -98,7 +98,7 @@ def compute_distance_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    x_squared = (X * X).sum(axis=1)[:, np.newaxis]
+    x_squared = (X * X).sum(axis=1)[:, None]
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
     np.clip(a=result, a_min=0, a_max=None, out=result)
