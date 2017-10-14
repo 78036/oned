@@ -9,34 +9,6 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-# this is just me trying to learn
-def compute_stupid_naive(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
-
-    M = np.zeros([N, N])
-    for i in range(N):
-        for j in range(N):
-            xi = X[i, :]
-            xj = X[j, :]
-            # dist = np.dot(xi.T, xj)
-            dist = np.dot(xi.T, xi)
-            M[i, j] = dist
-    return M
-
-
-# this is just me trying to learn
-def compute_stupid_smart(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
-    # use X to create M
-    # a = np.dot(X, X.T)
-    a = np.sum(X ** 2, axis=1)
-    b = np.tile(a, (D, D))
-    return b
-
-
 # get xi
 def get_sum_x_i(input_matrix):
     number_of_rows = input_matrix.shape[0]
@@ -184,23 +156,6 @@ def main():
 
         for i in range(10):
             X = np.random.rand(nrows, ncols)  # random matrix
-
-            # compute distance matrices
-            st = time.time()
-            stupid_loop = compute_stupid_naive(X)
-            et = time.time()
-            perf_stupid_loop[i, counter] = et - st  # time difference
-
-            st = time.time()
-            stupid_cool = compute_stupid_smart(X)
-            et = time.time()
-            perf_stupid_cool[i, counter] = et - st
-
-            # check if the two computed matrices are identical all the time
-            # add assert after adding correct method
-            # assert np.allclose(stupid_loop, stupid_cool, atol=1e-06)
-            np.savetxt('test-reports/stupid-loop.txt', stupid_loop, delimiter=',')
-            np.savetxt('test-reports/stupid-cool.txt', stupid_cool, delimiter=',')
 
             # compute distance matrices
             st = time.time()
