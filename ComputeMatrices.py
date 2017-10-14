@@ -98,12 +98,13 @@ def compute_distance_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    x_squared = (X * X).sum(axis=1)[:, np.newaxis]
-    y_squared = x_squared.T
-    result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    result[result < 0] = 0
-    result = np.sqrt(result)
-    return result
+    XX = (X * X).sum(axis=1)[:, np.newaxis]
+    YY = XX.T
+    Z = -2 * np.dot(X, X.T) + XX + YY
+    np.maximum(Z, 0, out=Z)  # remove negative values
+    Z.flat[::Z.shape[0] + 1] = 0.0  # make sure diagonal values are zero, sometimes doubles fail
+    Z = np.sqrt(Z)
+    return Z
 
 
 # third function to fill, compute correlation matrix using loops
