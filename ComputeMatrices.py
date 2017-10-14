@@ -73,9 +73,7 @@ def get_s_i_j(input_matrix, mu, row_number, column_number):
 
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
-
+    N, D = X.shape
     M = np.zeros([N, N])
     for i in range(N):
         for j in range(N):
@@ -101,7 +99,7 @@ def compute_distance_smart(X):
     x_squared = (X * X).sum(axis=1, keepdims=True)
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    np.clip(a=result, a_min=0, a_max=None, out=result)
+    result[result < 0] = 0
     result = np.sqrt(result)
     return result
 
