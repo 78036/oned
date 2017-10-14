@@ -101,7 +101,7 @@ def compute_distance_smart(X):
     x_squared = (X * X).sum(axis=1)[:, np.newaxis]
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    np.maximum(result, 0, out=result)
+    result[result < 0] = 0
     result = np.sqrt(result)
     return result
 
