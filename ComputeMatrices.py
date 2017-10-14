@@ -9,6 +9,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 # get xi
 def get_sum_x_i(input_matrix):
     number_of_rows = input_matrix.shape[0]
