@@ -99,7 +99,7 @@ def compute_distance_smart(X):
     x_squared = (X * X).sum(axis=1, keepdims=True)
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    result[result < 0] = 0
+    result[range(N), range(N)] = 0
     result = np.sqrt(result)
     return result
 
