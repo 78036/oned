@@ -73,9 +73,7 @@ def get_s_i_j(input_matrix, mu, row_number, column_number):
 
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
-
+    N, D = X.shape
     M = np.zeros([N, N])
     for i in range(N):
         for j in range(N):
@@ -98,10 +96,10 @@ def compute_distance_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    x_squared = (X * X).sum(axis=1)[:, np.newaxis]
+    x_squared = (X * X).sum(axis=1, keepdims=True)
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    np.maximum(result, 0, out=result)
+    result[range(N), range(N)] = 0
     result = np.sqrt(result)
     return result
 
@@ -121,7 +119,7 @@ def compute_correlation_naive(X):
         s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
             s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
-            if (i == j):
+            if i == j:
                 assert s_i_i == s_i_j
             sij[i][j] = s_i_j
             xi = X[:, i]
