@@ -98,8 +98,12 @@ def compute_distance_smart(X):
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
     # use X to create M
-    M = np.linalg.norm(X)
-    return M
+    x_squared = (X * X).sum(axis=1)[:, np.newaxis]
+    y_squared = x_squared.T
+    result = x_squared - 2 * np.dot(X, X.T) + y_squared
+    np.maximum(result, 0, out=result)
+    result = np.sqrt(result)
+    return result
 
 
 # third function to fill, compute correlation matrix using loops
@@ -134,12 +138,26 @@ def compute_correlation_naive(X):
 
 # fourth function to fill, compute correlation matrix without loops
 def compute_correlation_smart(X):
+    # N = X.shape[0]  # num of rows
+    # D = X[0].shape[0]  # num of cols
+    #
+    # # use X to create M
+    # M = np.corrcoef(X)
+    # return M
     N = X.shape[0]  # num of rows
     D = X[0].shape[0]  # num of cols
 
-    # use X to create M
-    M = np.corrcoef(X)
-    return M
+    S = np.zeros([D, D])
+    for i in range(D):
+        for j in range(D):
+            m = sum([X[n, i] for n in range(N)]) / N
+            S[i, j] = sum([(X[n, i] - m) * (X[n, j] - m) for n in range(N)]) / (N - 1.)
+    R = np.zeros([D, D])
+    for i in range(D):
+        for j in range(D):
+            ss = np.sqrt(S[i, i]) * np.sqrt(S[j, j])
+            R[i, j] = S[i][j] / ss if ss != 0 else 0
+    return R
 
 
 def main():
@@ -199,7 +217,7 @@ def main():
 
             # check if the two computed matrices are identical all the time
             # add assert after adding correct method
-            # assert np.allclose(dist_loop, dist_cool, atol=1e-02)
+            assert np.allclose(dist_loop, dist_cool, atol=1e-06)
             np.savetxt('test-reports/dist-loop.txt', dist_loop, delimiter=',')
             # np.savetxt('test-reports/dist-cool.txt', dist_cool, delimiter=',')
 
