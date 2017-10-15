@@ -53,7 +53,19 @@ def compute_correlation_naive(X):
 
 # fourth function to fill, compute correlation matrix without loops
 def compute_correlation_smart(X):
-    return np.corrcoef(X.T)
+    number_of_rows, number_of_columns = X.shape
+    X = np.array(X).T
+    sample_mean = np.average(X, axis=1)
+    X -= sample_mean[:, None]
+    x_transposed = X.T
+    S = np.dot(X, x_transposed.conj()) / np.float64(number_of_rows - 1)
+    S = S.squeeze()
+    try:
+        d = np.diag(S)
+    except ValueError:  # scalar covariance
+        d = 0
+    R = S / np.sqrt(np.multiply.outer(d, d))
+    return R
 
 
 def main():
