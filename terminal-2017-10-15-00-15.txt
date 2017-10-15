@@ -1,0 +1,579 @@
+Sun Oct 15 00:15:09 EDT 2017
+starting comparing distance computation .....
+matrix dimensions:  100 10
+Distance performance: 
+0.000613689422607
+Correlation performance: 
+0.00962924957275
+Distance performance: 
+0.000231266021729
+Correlation performance: 
+0.00961685180664
+Distance performance: 
+0.000217437744141
+Correlation performance: 
+0.00960564613342
+Distance performance: 
+0.000217914581299
+Correlation performance: 
+0.00960421562195
+Distance performance: 
+0.000216007232666
+Correlation performance: 
+0.00962567329407
+Distance performance: 
+0.000218629837036
+Correlation performance: 
+0.00959396362305
+Distance performance: 
+0.000220537185669
+Correlation performance: 
+0.00962400436401
+Distance performance: 
+0.000216722488403
+Correlation performance: 
+0.00960302352905
+Distance performance: 
+0.000217914581299
+Correlation performance: 
+0.00961971282959
+Distance performance: 
+0.000216960906982
+Correlation performance: 
+0.00962471961975
+matrix dimensions:  200 20
+Distance performance: 
+0.000869274139404
+Correlation performance: 
+0.0694012641907
+Distance performance: 
+0.000594615936279
+Correlation performance: 
+0.0692729949951
+Distance performance: 
+0.000594139099121
+Correlation performance: 
+0.0703101158142
+Distance performance: 
+0.000627517700195
+Correlation performance: 
+0.070116519928
+Distance performance: 
+0.000595569610596
+Correlation performance: 
+0.0700194835663
+Distance performance: 
+0.0005943775177
+Correlation performance: 
+0.0701260566711
+Distance performance: 
+0.000655651092529
+Correlation performance: 
+0.0701773166656
+Distance performance: 
+0.000693559646606
+Correlation performance: 
+0.0700726509094
+Distance performance: 
+0.000624418258667
+Correlation performance: 
+0.0701205730438
+Distance performance: 
+0.000595569610596
+Correlation performance: 
+0.0701813697815
+matrix dimensions:  300 30
+Distance performance: 
+0.00202417373657
+Correlation performance: 
+0.23424077034
+Distance performance: 
+0.00162220001221
+Correlation performance: 
+0.234087467194
+Distance performance: 
+0.00198531150818
+Correlation performance: 
+0.235393047333
+Distance performance: 
+0.00199460983276
+Correlation performance: 
+0.234013795853
+Distance performance: 
+0.00198769569397
+Correlation performance: 
+0.233861446381
+Distance performance: 
+0.0019543170929
+Correlation performance: 
+0.234644174576
+Distance performance: 
+0.00200152397156
+Correlation performance: 
+0.233903646469
+Distance performance: 
+0.00198245048523
+Correlation performance: 
+0.234275817871
+Distance performance: 
+0.00199246406555
+Correlation performance: 
+0.234040498734
+Distance performance: 
+0.00198912620544
+Correlation performance: 
+0.234587669373
+matrix dimensions:  400 40
+Distance performance: 
+0.00337100028992
+Correlation performance: 
+0.553190231323
+Distance performance: 
+0.00338816642761
+Correlation performance: 
+0.554554224014
+Distance performance: 
+0.00339937210083
+Correlation performance: 
+0.553378105164
+Distance performance: 
+0.0033814907074
+Correlation performance: 
+0.553283691406
+Distance performance: 
+0.00344228744507
+Correlation performance: 
+0.553349733353
+Distance performance: 
+0.00342702865601
+Correlation performance: 
+0.55342912674
+Distance performance: 
+0.00339579582214
+Correlation performance: 
+0.553171396255
+Distance performance: 
+0.00343656539917
+Correlation performance: 
+0.553187847137
+Distance performance: 
+0.00337982177734
+Correlation performance: 
+0.553712129593
+Distance performance: 
+0.00341796875
+Correlation performance: 
+0.552914142609
+matrix dimensions:  500 50
+Distance performance: 
+0.00542092323303
+Correlation performance: 
+1.08034682274
+Distance performance: 
+0.00538849830627
+Correlation performance: 
+1.07909297943
+Distance performance: 
+0.00540852546692
+Correlation performance: 
+1.08542490005
+Distance performance: 
+0.00536775588989
+Correlation performance: 
+1.07872748375
+Distance performance: 
+0.00535035133362
+Correlation performance: 
+1.08044981956
+Distance performance: 
+0.00541520118713
+Correlation performance: 
+1.07925772667
+Distance performance: 
+0.0053915977478
+Correlation performance: 
+1.07891082764
+Distance performance: 
+0.0053699016571
+Correlation performance: 
+1.08166885376
+Distance performance: 
+0.00564169883728
+Correlation performance: 
+1.0786254406
+Distance performance: 
+0.00566983222961
+Correlation performance: 
+1.0792953968
+matrix dimensions:  600 60
+Distance performance: 
+0.00780653953552
+Correlation performance: 
+1.86934018135
+Distance performance: 
+0.00713562965393
+Correlation performance: 
+1.86818265915
+Distance performance: 
+0.00740075111389
+Correlation performance: 
+1.87039613724
+Distance performance: 
+0.00807595252991
+Correlation performance: 
+1.87984895706
+Distance performance: 
+0.00743985176086
+Correlation performance: 
+1.8688147068
+Distance performance: 
+0.00807619094849
+Correlation performance: 
+1.87059760094
+Distance performance: 
+0.00742292404175
+Correlation performance: 
+1.8792450428
+Distance performance: 
+0.00818610191345
+Correlation performance: 
+1.87148737907
+Distance performance: 
+0.00736427307129
+Correlation performance: 
+1.87959051132
+Distance performance: 
+0.00766849517822
+Correlation performance: 
+1.87143778801
+matrix dimensions:  700 70
+Distance performance: 
+0.00960993766785
+Correlation performance: 
+2.95481872559
+Distance performance: 
+0.0103390216827
+Correlation performance: 
+2.94828534126
+Distance performance: 
+0.0102474689484
+Correlation performance: 
+2.94456100464
+Distance performance: 
+0.010529756546
+Correlation performance: 
+2.94466280937
+Distance performance: 
+0.00922703742981
+Correlation performance: 
+2.94321393967
+Distance performance: 
+0.0101182460785
+Correlation performance: 
+2.94455885887
+Distance performance: 
+0.00947618484497
+Correlation performance: 
+2.94507718086
+Distance performance: 
+0.0104687213898
+Correlation performance: 
+2.94380784035
+Distance performance: 
+0.0094633102417
+Correlation performance: 
+2.9448120594
+Distance performance: 
+0.0100953578949
+Correlation performance: 
+2.94854450226
+matrix dimensions:  800 80
+Distance performance: 
+0.012909412384
+Correlation performance: 
+4.39602208138
+Distance performance: 
+0.0124258995056
+Correlation performance: 
+4.3981089592
+Distance performance: 
+0.012800693512
+Correlation performance: 
+4.39878225327
+Distance performance: 
+0.0127229690552
+Correlation performance: 
+4.39803600311
+Distance performance: 
+0.0133059024811
+Correlation performance: 
+4.39793872833
+Distance performance: 
+0.0123422145844
+Correlation performance: 
+4.39793181419
+Distance performance: 
+0.012864112854
+Correlation performance: 
+4.39895129204
+Distance performance: 
+0.0127332210541
+Correlation performance: 
+4.40175414085
+Distance performance: 
+0.0133254528046
+Correlation performance: 
+4.39877128601
+Distance performance: 
+0.0122504234314
+Correlation performance: 
+4.40266752243
+matrix dimensions:  900 90
+Distance performance: 
+0.015679359436
+Correlation performance: 
+6.25978851318
+Distance performance: 
+0.0156526565552
+Correlation performance: 
+6.25801515579
+Distance performance: 
+0.015734910965
+Correlation performance: 
+6.25987887383
+Distance performance: 
+0.015590429306
+Correlation performance: 
+6.26142883301
+Distance performance: 
+0.0155444145203
+Correlation performance: 
+6.25731611252
+Distance performance: 
+0.0155963897705
+Correlation performance: 
+6.25894522667
+Distance performance: 
+0.0155589580536
+Correlation performance: 
+6.25581049919
+Distance performance: 
+0.0152571201324
+Correlation performance: 
+6.25928688049
+Distance performance: 
+0.0153439044952
+Correlation performance: 
+6.2594435215
+Distance performance: 
+0.0153298377991
+Correlation performance: 
+6.25562000275
+matrix dimensions:  1000 100
+Distance performance: 
+0.0186915397644
+Correlation performance: 
+8.58658885956
+Distance performance: 
+0.0195171833038
+Correlation performance: 
+8.58983302116
+Distance performance: 
+0.0199909210205
+Correlation performance: 
+8.58698654175
+Distance performance: 
+0.019656419754
+Correlation performance: 
+8.58683991432
+Distance performance: 
+0.0197761058807
+Correlation performance: 
+8.59817004204
+Distance performance: 
+0.0196623802185
+Correlation performance: 
+8.58756184578
+Distance performance: 
+0.0197458267212
+Correlation performance: 
+8.58678531647
+Distance performance: 
+0.0194838047028
+Correlation performance: 
+8.58601570129
+Distance performance: 
+0.0199062824249
+Correlation performance: 
+8.55398225784
+Distance performance: 
+0.019434928894
+Correlation performance: 
+8.59235286713
+matrix dimensions:  1100 110
+Distance performance: 
+0.0220685005188
+Correlation performance: 
+11.415170908
+Distance performance: 
+0.0221936702728
+Correlation performance: 
+11.4580454826
+Distance performance: 
+0.0219764709473
+Correlation performance: 
+11.4160618782
+Distance performance: 
+0.0221412181854
+Correlation performance: 
+11.4632422924
+Distance performance: 
+0.0219602584839
+Correlation performance: 
+11.4349293709
+Distance performance: 
+0.0219080448151
+Correlation performance: 
+11.4218404293
+Distance performance: 
+0.0221288204193
+Correlation performance: 
+11.4325947762
+Distance performance: 
+0.022066116333
+Correlation performance: 
+11.426394701
+Distance performance: 
+0.0221135616302
+Correlation performance: 
+11.4233524799
+Distance performance: 
+0.0218932628632
+Correlation performance: 
+11.4277086258
+matrix dimensions:  1200 120
+Distance performance: 
+0.0259945392609
+Correlation performance: 
+14.8536598682
+Distance performance: 
+0.0260391235352
+Correlation performance: 
+14.8903765678
+Distance performance: 
+0.0260305404663
+Correlation performance: 
+14.8650856018
+Distance performance: 
+0.0259590148926
+Correlation performance: 
+14.8735938072
+Distance performance: 
+0.0260200500488
+Correlation performance: 
+14.8577096462
+Distance performance: 
+0.0260865688324
+Correlation performance: 
+14.870288372
+Distance performance: 
+0.026074886322
+Correlation performance: 
+14.8665652275
+Distance performance: 
+0.0260004997253
+Correlation performance: 
+14.8718290329
+Distance performance: 
+0.0260255336761
+Correlation performance: 
+14.8648164272
+Distance performance: 
+0.0260801315308
+Correlation performance: 
+14.8651564121
+matrix dimensions:  1300 130
+Distance performance: 
+0.0307652950287
+Correlation performance: 
+18.9253945351
+Distance performance: 
+0.0306129455566
+Correlation performance: 
+18.9341444969
+Distance performance: 
+0.0313150882721
+Correlation performance: 
+18.9216508865
+Distance performance: 
+0.0305898189545
+Correlation performance: 
+18.9096128941
+Distance performance: 
+0.0313053131104
+Correlation performance: 
+18.9159555435
+Distance performance: 
+0.0306575298309
+Correlation performance: 
+18.916012764
+Distance performance: 
+0.0312972068787
+Correlation performance: 
+18.9231102467
+Distance performance: 
+0.0303521156311
+Correlation performance: 
+18.9175343513
+Distance performance: 
+0.0312588214874
+Correlation performance: 
+18.929008007
+Distance performance: 
+0.030699968338
+Correlation performance: 
+18.9129369259
+matrix dimensions:  1400 140
+Distance performance: 
+0.0357894897461
+Correlation performance: 
+23.6138782501
+Distance performance: 
+0.0359752178192
+Correlation performance: 
+23.6255235672
+Distance performance: 
+0.0358395576477
+Correlation performance: 
+23.6127135754
+Distance performance: 
+0.0358338356018
+Correlation performance: 
+23.6268467903
+Distance performance: 
+0.0359075069427
+Correlation performance: 
+23.5958454609
+Distance performance: 
+0.0357708930969
+Correlation performance: 
+23.6131362915
+Distance performance: 
+0.0358300209045
+Correlation performance: 
+23.5984895229
+Distance performance: 
+0.0357866287231
+Correlation performance: 
+23.6113717556
+Distance performance: 
+0.0358288288116
+Correlation performance: 
+23.5976638794
+Distance performance: 
+0.0358986854553
+Correlation performance: 
+23.6028749943
+result is written to CompareDistanceCompFig.png
+result is written to CompareCorrelationCompFig.png
+Sun Oct 15 00:59:05 EDT 2017
