@@ -87,15 +87,17 @@ def compute_correlation_naive(X):
     M = np.zeros([D, D])
     sij = np.zeros([D, D])
     for i in range(D):
+        assert sum([X[n, i] for n in range(N)]) / N == sample_mean[i]
         s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
         for j in range(D):
             s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
             if i == j:
                 assert s_i_i == s_i_j
+            print("compare the following two lines: ")
+            print(sum([(X[n, i] - sample_mean[i]) * (X[n, j] - sample_mean[i]) for n in range(N)]) / (N - 1.))
+            print(s_i_j)
             sij[i][j] = s_i_j
-            xi = X[:, i]
-            xj = X[:, j]
-            if sij[i][i] != 0 or sij[j][j] != 0:
+            if sij[i][i] == 0 or sij[j][j] == 0:
                 corr = 0
             else:
                 corr = sij[i][j] / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
