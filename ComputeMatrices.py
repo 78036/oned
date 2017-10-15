@@ -10,97 +10,50 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# get xi
-def get_sum_x_i(input_matrix):
-    number_of_rows = input_matrix.shape[0]
-    number_of_columns = input_matrix[0].shape[0]
-    result = np.zeros(number_of_columns)
-    for i in range(number_of_columns):
-        for j in range(number_of_rows):
-            result[i] += input_matrix[j, i]
-    return result
-
-
-# get sii
-def get_s_i_i(input_matrix, mu, row_number):
-    n_max = input_matrix.shape[0]
-    intermediate_subtract = 0.0
-    for n in range(n_max):
-        intermediate_subtract += (input_matrix[n][row_number] - mu[row_number]) ** 2
-    result = intermediate_subtract / (n_max - 1)
-    assert np.abs(result) < 1
-    return result
-
-
-# get sij
-def get_s_i_j(input_matrix, mu, row_number, column_number):
-    n_max = input_matrix.shape[0]
-    intermediate_subtract = 0.0
-    for n in range(n_max):
-        intermediate_subtract += (
-            (input_matrix[n][row_number] - mu[row_number]) * (input_matrix[n][row_number] - mu[column_number]))
-    result = intermediate_subtract / (n_max - 1)
-    assert np.abs(result) < 1
-    return result
-
-
 # first function to fill, compute distance matrix using loops
 def compute_distance_naive(X):
-    N, D = X.shape
-    M = np.zeros([N, N])
-    for i in range(N):
-        for j in range(N):
+    row, column = X.shape
+    result = np.zeros([row, row])
+    for i in range(row):
+        for j in range(row):
             xi = X[i, :]
             xj = X[j, :]
-            # dist = 0.0  # a placetaker line,
-            # you have to change it to distance between xi and xj
-            # sum = 0.0
-            # for increment in range(D):
-            #     sum = sum + np.square(X[i, increment].T - X[j, increment].T)
-            # dist = np.sqrt(sum)
-            # dist = np.linalg.norm(xi - xj)
             dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.T, xj) + np.dot(xj, xj))
-            M[i, j] = dist
-    return M
+            result[i, j] = dist
+    return result
 
 
 # second function to fill, compute distance matrix without loops
 def compute_distance_smart(X):
-    N, D = X.shape
+    row, column = X.shape
     # use X to create M
     x_squared = (X * X).sum(axis=1, keepdims=True)
     y_squared = x_squared.T
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
-    result[range(N), range(N)] = 0
+    result[range(row), range(row)] = 0
     result = np.sqrt(result)
     return result
 
 
 # third function to fill, compute correlation matrix using loops
 def compute_correlation_naive(X):
-    N, D = X.shape
-    S = np.zeros([D, D])
-    for i in range(D):
-        for j in range(D):
-            m = sum([X[n, i] for n in range(N)]) / N
-            S[i, j] = sum([(X[n, i] - m) * (X[n, j] - m) for n in range(N)]) / (N - 1.)
-    R = np.zeros([D, D])
-    for i in range(D):
-        for j in range(D):
-            ss = np.sqrt(S[i, i]) * np.sqrt(S[j, j])
-            R[i, j] = S[i][j] / ss if ss != 0 else 0
-    return R
+    row, column = X.shape
+    S = np.zeros([column, column])
+    for i in range(column):
+        for j in range(column):
+            sample_mean = sum([X[n, i] for n in range(row)]) / row
+            S[i, j] = sum([(X[n, i] - sample_mean) * (X[n, j] - sample_mean) for n in range(row)]) / (row - 1.)
+    correlation_matrix = np.zeros([column, column])
+    for i in range(column):
+        for j in range(column):
+            s_i_j = np.sqrt(S[i, i]) * np.sqrt(S[j, j])
+            correlation_matrix[i, j] = S[i][j] / s_i_j if s_i_j != 0 else 0
+    return correlation_matrix
 
 
 # fourth function to fill, compute correlation matrix without loops
 def compute_correlation_smart(X):
-    # N = X.shape[0]  # num of rows
-    # D = X[0].shape[0]  # num of cols
-    #
-    # # use X to create M
-    M = np.corrcoef(X.T)
-    return M
-
+    return np.corrcoef(X.T)
 
 
 def main():
