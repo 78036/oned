@@ -59,19 +59,18 @@ def compute_distance_naive(X):
             #     sum = sum + np.square(X[i, increment].T - X[j, increment].T)
             # dist = np.sqrt(sum)
             # dist = np.linalg.norm(xi - xj)
-            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.transpose, xj) + np.dot(xj, xj))
+            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.T, xj) + np.dot(xj, xj))
             M[i, j] = dist
     return M
 
 
 # second function to fill, compute distance matrix without loops
 def compute_distance_smart(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
+    N, D = X.shape
     # use X to create M
     x_squared = (X * X).sum(axis=1, keepdims=True)
-    y_squared = x_squared.transpose
-    result = x_squared - 2 * np.dot(X, X.transpose) + y_squared
+    y_squared = x_squared.T
+    result = x_squared - 2 * np.dot(X, X.T) + y_squared
     result[range(N), range(N)] = 0
     result = np.sqrt(result)
     return result
@@ -79,8 +78,7 @@ def compute_distance_smart(X):
 
 # third function to fill, compute correlation matrix using loops
 def compute_correlation_naive(X):
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
+    N, D = X.shape
     # use X to create M
     M = np.zeros([D, D])
     sum_x_i = get_sum_x_i(X)
@@ -115,9 +113,7 @@ def compute_correlation_smart(X):
     # # use X to create M
     # M = np.corrcoef(X)
     # return M
-    N = X.shape[0]  # num of rows
-    D = X[0].shape[0]  # num of cols
-
+    N, D = X.shape
     S = np.zeros([D, D])
     for i in range(D):
         for j in range(D):
