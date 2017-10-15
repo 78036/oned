@@ -153,6 +153,8 @@ def main():
             dist_cool = compute_distance_smart(X)
             et = time.time()
             perf_dist_cool[i, counter] = et - st
+            print("Distance performance: ")
+            print(perf_dist_cool[i, counter])
             # check if the two computed matrices are identical all the time
             # add assert after adding correct method
             assert np.allclose(dist_loop, dist_cool, atol=1e-06)
@@ -169,6 +171,8 @@ def main():
             corr_cool = compute_correlation_smart(X)
             et = time.time()
             perf_corr_cool[i, counter] = et - st
+            print("Correlation performance: ")
+            print(perf_corr_cool[i, counter])
 
             # check if the two computed matrices are identical all the time
             # assert np.allclose(corr_loop, corr_cool, atol=1e-06)
