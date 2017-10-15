@@ -70,7 +70,7 @@ def compute_distance_smart(X):
     D = X[0].shape[0]  # num of cols
     # use X to create M
     x_squared = (X * X).sum(axis=1, keepdims=True)
-    y_squared = x_squared.T
+    y_squared = x_squared.transpose
     result = x_squared - 2 * np.dot(X, X.T) + y_squared
     result[range(N), range(N)] = 0
     result = np.sqrt(result)
