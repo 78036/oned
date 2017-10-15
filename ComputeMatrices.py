@@ -79,40 +79,6 @@ def compute_distance_smart(X):
 # third function to fill, compute correlation matrix using loops
 def compute_correlation_naive(X):
     N, D = X.shape
-    # use X to create M
-    M = np.zeros([D, D])
-    sum_x_i = get_sum_x_i(X)
-    sample_mean = sum_x_i / N
-    assert sample_mean.shape[0] == D
-    M = np.zeros([D, D])
-    sij = np.zeros([D, D])
-    for i in range(D):
-        assert sum([X[n, i] for n in range(N)]) / N == sample_mean[i]
-        s_i_i = get_s_i_i(input_matrix=X, mu=sample_mean, row_number=i)
-        for j in range(D):
-            s_i_j = get_s_i_j(input_matrix=X, mu=sample_mean, row_number=i, column_number=j)
-            if i == j:
-                assert s_i_i == s_i_j
-            sij[i][j] = s_i_j
-            if sij[i][i] == 0 or sij[j][j] == 0:
-                corr = 0
-            else:
-                corr = sij[i][j] / (np.sqrt(sij[i][i]) * np.sqrt(sij[j][j]))
-            # a placetaker line,
-            # you have to change it to correlation between xi and xj
-            M[i, j] = corr
-    return M
-
-
-# fourth function to fill, compute correlation matrix without loops
-def compute_correlation_smart(X):
-    # N = X.shape[0]  # num of rows
-    # D = X[0].shape[0]  # num of cols
-    #
-    # # use X to create M
-    # M = np.corrcoef(X)
-    # return M
-    N, D = X.shape
     S = np.zeros([D, D])
     for i in range(D):
         for j in range(D):
@@ -124,6 +90,17 @@ def compute_correlation_smart(X):
             ss = np.sqrt(S[i, i]) * np.sqrt(S[j, j])
             R[i, j] = S[i][j] / ss if ss != 0 else 0
     return R
+
+
+# fourth function to fill, compute correlation matrix without loops
+def compute_correlation_smart(X):
+    # N = X.shape[0]  # num of rows
+    # D = X[0].shape[0]  # num of cols
+    #
+    # # use X to create M
+    M = np.corrcoef(X.T)
+    return M
+
 
 
 def main():
@@ -174,7 +151,7 @@ def main():
             print(perf_corr_cool[i, counter])
 
             # check if the two computed matrices are identical all the time
-            # assert np.allclose(corr_loop, corr_cool, atol=1e-06)
+            assert np.allclose(corr_loop, corr_cool, atol=1e-06)
             np.savetxt('test-reports/corr-loop.txt', corr_loop, delimiter=',')
             np.savetxt('test-reports/corr-cool.txt', corr_cool, delimiter=',')
         counter = counter + 1
