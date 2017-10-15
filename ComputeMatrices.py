@@ -59,7 +59,7 @@ def compute_distance_naive(X):
             #     sum = sum + np.square(X[i, increment].T - X[j, increment].T)
             # dist = np.sqrt(sum)
             # dist = np.linalg.norm(xi - xj)
-            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.T, xj) + np.dot(xj, xj))
+            dist = np.sqrt(np.dot(xi, xi) - 2 * np.dot(xi.transpose, xj) + np.dot(xj, xj))
             M[i, j] = dist
     return M
 
@@ -71,7 +71,7 @@ def compute_distance_smart(X):
     # use X to create M
     x_squared = (X * X).sum(axis=1, keepdims=True)
     y_squared = x_squared.transpose
-    result = x_squared - 2 * np.dot(X, X.T) + y_squared
+    result = x_squared - 2 * np.dot(X, X.transpose) + y_squared
     result[range(N), range(N)] = 0
     result = np.sqrt(result)
     return result
