@@ -1,3 +1,5 @@
+import timeit
+
 import numpy as np
 from sklearn.datasets import load_breast_cancer, load_digits
 
@@ -48,9 +50,12 @@ def do_digits():
 
 def main():
     print("Hello, world!")
-    do_iris()
-    do_breast_cancer()
-    do_digits()
+    print("do iris")
+    print(timeit.repeat(do_iris(), number=10))
+    print("do breast cancer")
+    print(timeit.repeat(do_breast_cancer(), number=10))
+    print("do digits")
+    print(timeit.repeat(do_digits(), number=10))
     print("bye")
 
 
