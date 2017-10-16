@@ -69,7 +69,7 @@ def compute_correlation_smart(X):
     variance = np.sum(x_squared, axis=0) / (rows - 1)
     sigma = np.sqrt(variance)
     intermediate_result = np.outer(sigma, sigma)
-    result = np.multiply(covariance, np.power(intermediate_result, -1))
+    result = np.divide(covariance, intermediate_result)
     where_are_nans = np.isnan(result)
     result[where_are_nans] = 0
     return result
