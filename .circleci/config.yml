@@ -45,6 +45,7 @@ jobs:
           command: |
             . venv/bin/activate
             python ComputeMatrices.py
+            python SKLearnDatasets.py
 
       - store_artifacts:
           path: test-reports
