@@ -51,11 +51,11 @@ def do_digits():
 def main():
     print("Hello, world!")
     print("do iris")
-    print(timeit.Timer(do_iris().timeit(number=10)))
+    print(timeit.Timer(do_iris()).timeit(number=10))
     print("do breast cancer")
-    print(timeit.Timer(do_breast_cancer().timeit(number=10)))
+    print(timeit.Timer(do_breast_cancer()).timeit(number=10))
     print("do digits")
-    print(timeit.Timer(do_digits().timeit(number=10)))
+    print(timeit.Timer(do_digits()).timeit(number=10))
     print("bye")
 
 
