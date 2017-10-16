@@ -38,17 +38,20 @@ def compute_distance_smart(X):
 # third function to fill, compute correlation matrix using loops
 def compute_correlation_naive(X):
     row, column = X.shape
-    S = np.zeros([column, column])
+    result = np.zeros([column, column])
     for i in range(column):
+        xi = X[:, i]
+        mui = np.sum(xi) / row
+        xni = xi - mui
+        sigma_i = np.sqrt(np.dot(xni, xni) / (row - 1))
         for j in range(column):
-            sample_mean = sum([X[n, i] for n in range(row)]) / row
-            S[i, j] = sum([(X[n, i] - sample_mean) * (X[n, j] - sample_mean) for n in range(row)]) / (row - 1.)
-    correlation_matrix = np.zeros([column, column])
-    for i in range(column):
-        for j in range(column):
-            s_i_j = np.sqrt(S[i, i]) * np.sqrt(S[j, j])
-            correlation_matrix[i, j] = S[i][j] / s_i_j if s_i_j != 0 else 0
-    return correlation_matrix
+            xj = X[:, j]
+            muj = np.sum(xj) / row
+            xnj = xj - muj
+            sij = (np.dot(xni, xnj) / (row - 1))
+            sigma_j = np.sqrt(np.dot(xnj, xnj) / (row - 1))
+            result[i, j] = sij / (sigma_i * sigma_j)
+    return result
 
 
 # fourth function to fill, compute correlation matrix without loops
@@ -58,8 +61,7 @@ def compute_correlation_smart(X):
     sample_mean = np.average(X, axis=1)
     X -= sample_mean[:, None]
     x_transposed = X.T
-    S = np.dot(X, x_transposed.conj()) / np.float64(number_of_rows - 1)
-    S = S.squeeze()
+    S = np.dot(X, x_transposed) / (number_of_rows - 1)
     try:
         d = np.diag(S)
     except ValueError:  # scalar covariance
@@ -96,7 +98,7 @@ def main():
             perf_dist_cool[i, counter] = et - st
             # check if the two computed matrices are identical all the time
             # add assert after adding correct method
-            assert np.allclose(dist_loop, dist_cool, atol=1e-08)
+            assert np.allclose(dist_loop, dist_cool, atol=1e-10)
             np.savetxt('test-reports/dist-loop.txt', dist_loop, delimiter=',')
             np.savetxt('test-reports/dist-cool.txt', dist_cool, delimiter=',')
 
@@ -112,7 +114,7 @@ def main():
             perf_corr_cool[i, counter] = et - st
 
             # check if the two computed matrices are identical all the time
-            assert np.allclose(corr_loop, corr_cool, atol=1e-08)
+            assert np.allclose(corr_loop, corr_cool, atol=1e-10)
             np.savetxt('test-reports/corr-loop.txt', corr_loop, delimiter=',')
             np.savetxt('test-reports/corr-cool.txt', corr_cool, delimiter=',')
         counter = counter + 1
