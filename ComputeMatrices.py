@@ -50,24 +50,29 @@ def compute_correlation_naive(X):
             xnj = xj - muj
             sij = (np.dot(xni, xnj) / (row - 1))
             sigma_j = np.sqrt(np.dot(xnj, xnj) / (row - 1))
-            result[i, j] = sij / (sigma_i * sigma_j)
+            if sigma_i == 0 or sigma_j == 0:
+                result[i, j] = 0.0
+            else:
+                result[i, j] = sij / (sigma_i * sigma_j)
     return result
 
 
 # fourth function to fill, compute correlation matrix without loops
 def compute_correlation_smart(X):
-    number_of_rows, number_of_columns = X.shape
-    X = np.array(X).T
-    sample_mean = np.average(X, axis=1)
-    X -= sample_mean[:, None]
-    x_transposed = X.T
-    S = np.dot(X, x_transposed) / (number_of_rows - 1)
-    try:
-        d = np.diag(S)
-    except ValueError:  # scalar covariance
-        d = 0
-    R = S / np.sqrt(np.multiply.outer(d, d))
-    return R
+    rows, columns = X.shape
+    mu_vector = (np.sum(X, axis=0)) / rows
+    mu_matrix = mu_vector * np.ones([rows, 1])
+    x = X - mu_matrix
+    x_transposed = np.transpose(x)
+    covariance = np.dot(x_transposed, x) / (rows - 1)
+    x_squared = np.multiply(x, x)
+    variance = np.sum(x_squared, axis=0) / (rows - 1)
+    sigma = np.sqrt(variance)
+    intermediate_result = np.outer(sigma, sigma)
+    result = np.multiply(covariance, np.power(intermediate_result, -1))
+    where_are_nans = np.isnan(result)
+    result[where_are_nans] = 0
+    return result
 
 
 def main():
